@@ -57,16 +57,75 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("l1");
-        ArrayList<String> list = new ArrayList<>();
+        DatabaseReference myRef2 = database.getReference().child("l2");
+        DatabaseReference myRef3 = database.getReference().child("l3");
+
         String[][] l1 = new String[3][2];
+        String[][] l2 = new String[3][2];
+        String[][] l3 = new String[3][2];
+
+        myRef3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot3) {
+                int outerLoop = 0;
+                for(DataSnapshot snapshot3 : dataSnapshot3.getChildren()) {
+                    //Log.d("snap:", snapshot2.toString());
+                    for (int i = 0; i < snapshot3.getChildrenCount(); i++) {
+                        l3[outerLoop][i] = snapshot3.child(String.valueOf(i)).getValue().toString();
+                        //Log.d("test3", snapshot.child(String.valueOf(i)).getValue().toString());
+                    }
+                    outerLoop++;
+                }
+
+                // Loop through all rows
+                for (String[] row : l3) {
+
+                    // converting each row as string
+                    // and then printing in a separate line
+                    Log.d("final", Arrays.toString(row));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        myRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
+                int outerLoop = 0;
+                for(DataSnapshot snapshot2 : dataSnapshot2.getChildren()) {
+                    //Log.d("snap:", snapshot2.toString());
+                    for (int i = 0; i < snapshot2.getChildrenCount(); i++) {
+                        l2[outerLoop][i] = snapshot2.child(String.valueOf(i)).getValue().toString();
+                        //Log.d("test3", snapshot.child(String.valueOf(i)).getValue().toString());
+                    }
+                    outerLoop++;
+                }
+
+                // Loop through all rows
+                for (String[] row : l2) {
+
+                    // converting each row as string
+                    // and then printing in a separate line
+                    //Log.d("final", Arrays.toString(row));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //Log.d("test2", dataSnapshot.getChildren().iterator().next().toString());
                 int outerLoop = 0;
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Log.d("snap:", snapshot.toString());
+                    //Log.d("snap:", snapshot.toString());
                     for (int i = 0; i < snapshot.getChildrenCount(); i++) {
                         l1[outerLoop][i] = snapshot.child(String.valueOf(i)).getValue().toString();
                         //Log.d("test3", snapshot.child(String.valueOf(i)).getValue().toString());
@@ -79,27 +138,8 @@ public class MainActivity extends AppCompatActivity {
 
                     // converting each row as string
                     // and then printing in a separate line
-                    System.out.println(Arrays.toString(row));
+                    //Log.d("final", Arrays.toString(row));
                 }
-
-                //for (DataSnapshot dataSnaphot : dataSnapshot) {
-
-                /*
-                for (String[][] array2D: data) {
-                    for (String[] array1D: array2D) {
-                        for(String item: array1D) {
-                            //System.out.println(item);
-                        }
-                    }
-                }
-                */
-                //Log.d("test2", dataSnapshot.getValue().toString());
-                /*
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    list.add(snapshot.getValue().toString());
-                    Log.d("test",snapshot.getValue().toString() );
-                }
-                 */
             }
 
             @Override
