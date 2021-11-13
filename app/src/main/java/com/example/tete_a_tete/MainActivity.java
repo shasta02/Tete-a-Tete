@@ -4,8 +4,10 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -14,9 +16,18 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.tete_a_tete.databinding.ActivityMainBinding;
-
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +52,59 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference().child("l1");
+        ArrayList<String> list = new ArrayList<>();
+        String[][] l1 = new String[3][2];
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //Log.d("test2", dataSnapshot.getChildren().iterator().next().toString());
+                int outerLoop = 0;
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Log.d("snap:", snapshot.toString());
+                    for (int i = 0; i < snapshot.getChildrenCount(); i++) {
+                        l1[outerLoop][i] = snapshot.child(String.valueOf(i)).getValue().toString();
+                        //Log.d("test3", snapshot.child(String.valueOf(i)).getValue().toString());
+                    }
+                    outerLoop++;
+                }
+
+                // Loop through all rows
+                for (String[] row : l1) {
+
+                    // converting each row as string
+                    // and then printing in a separate line
+                    System.out.println(Arrays.toString(row));
+                }
+
+                //for (DataSnapshot dataSnaphot : dataSnapshot) {
+
+                /*
+                for (String[][] array2D: data) {
+                    for (String[] array1D: array2D) {
+                        for(String item: array1D) {
+                            //System.out.println(item);
+                        }
+                    }
+                }
+                */
+                //Log.d("test2", dataSnapshot.getValue().toString());
+                /*
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    list.add(snapshot.getValue().toString());
+                    Log.d("test",snapshot.getValue().toString() );
+                }
+                 */
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

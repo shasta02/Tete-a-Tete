@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "626073901512",
+    "firebase_url": "https://tete-a-tete-13c94-default-rtdb.firebaseio.com",
+    "project_id": "tete-a-tete-13c94",
+    "storage_bucket": "tete-a-tete-13c94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626073901512:android:0d3bb7dbdf2e475df808fd",
+        "android_client_info": {
+          "package_name": "com.example.tete_a_tete"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626073901512-31qln7f373fpg6spiiueebhqssd4iaii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlI-xdS_-4WySr0Eq2kX8AVc1tlNnVDVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626073901512-31qln7f373fpg6spiiueebhqssd4iaii.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
