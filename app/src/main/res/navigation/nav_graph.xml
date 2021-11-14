@@ -22,7 +22,44 @@
         tools:layout="@layout/fragment_second">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SecondFragment_to_TopicFragment"
+            app:destination="@id/topicFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_friendsTopics"
+            app:destination="@id/friendsTopics" />
+        <action
+            android:id="@+id/action_SecondFragment_to_closeFriends"
+            app:destination="@id/closeFriends" />
     </fragment>
+    <fragment
+        android:id="@+id/topicFragment"
+        android:name="com.example.tete_a_tete.TopicFragment"
+        android:label="fragment_topic"
+        tools:layout="@layout/fragment_topic" >
+        <action
+            android:id="@+id/action_topicFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
+        <action
+            android:id="@+id/action_topicFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardFragment"
+        android:name="com.example.tete_a_tete.cardFragment"
+        android:label="fragment_card"
+        tools:layout="@layout/fragment_card" >
+        <action
+            android:id="@+id/action_cardFragment_to_topicFragment"
+            app:destination="@id/topicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/friendsTopics"
+        android:name="com.example.tete_a_tete.FriendsTopics"
+        android:label="fragment_friends_topics"
+        tools:layout="@layout/fragment_friends_topics" />
+    <fragment
+        android:id="@+id/closeFriends"
+        android:name="com.example.tete_a_tete.closeFriends"
+        android:label="fragment_close_friends"
+        tools:layout="@layout/fragment_close_friends" />
 </navigation>
