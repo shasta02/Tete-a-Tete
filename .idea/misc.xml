@@ -9,7 +9,9 @@
         <entry key="app/src/main/res/layout/content_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/content_main2.xml" value="0.13994565217391305" />
         <entry key="app/src/main/res/layout/fragment_card.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_close_friends.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_card3.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/fragment_card4.xml" value="0.17239583333333333" />
+        <entry key="app/src/main/res/layout/fragment_close_friends.xml" value="0.2655698211994351" />
         <entry key="app/src/main/res/layout/fragment_closefriendstopics.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_first2.xml" value="0.14447463768115942" />

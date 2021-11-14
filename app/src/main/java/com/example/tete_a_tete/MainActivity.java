@@ -33,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    private String level;
+    private String topic;
+    static String[][] l1 = new String[3][2];
+    static String[][] l2 = new String[3][2];
+    static String[][] l3 = new String[3][2];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +53,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
 
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference().child("l1");
         DatabaseReference myRef2 = database.getReference().child("l2");
         DatabaseReference myRef3 = database.getReference().child("l3");
-
-        String[][] l1 = new String[3][2];
-        String[][] l2 = new String[3][2];
-        String[][] l3 = new String[3][2];
 
         myRef3.addValueEventListener(new ValueEventListener() {
             @Override
@@ -171,4 +171,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
 }

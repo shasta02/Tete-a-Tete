@@ -14,6 +14,7 @@ import com.example.tete_a_tete.databinding.FragmentSecondBinding;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
+    variables vars = new variables();
 
     @Override
     public View onCreateView(
@@ -32,6 +33,7 @@ public class SecondFragment extends Fragment {
         binding.button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vars.level = 1;
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_TopicFragment);
             }
@@ -40,6 +42,7 @@ public class SecondFragment extends Fragment {
         binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vars.level = 2;
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_friendsTopics);
             }
@@ -48,8 +51,18 @@ public class SecondFragment extends Fragment {
         binding.button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                vars.level = 3;
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_closeFriends);
+            }
+        });
+
+        binding.imageButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vars.level = 3;
+                NavHostFragment.findNavController(SecondFragment.this)
+                        .navigate(R.id.action_SecondFragment_to_cardFragment3);
             }
         });
     }
